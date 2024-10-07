@@ -59,7 +59,7 @@ resource "postgresql_role" "role" {
 
 resource "postgresql_database" "database" {
   name              = var.database_name
-  owner             = var.user_username
+  owner             = postgresql_role.role.name
   template          = "template0"
   lc_collate        = "C"
   connection_limit  = -1
